@@ -1,4 +1,4 @@
-const readline = require('readline-sync')
+// const readline = require('readline-sync')
 
 
 // let opcao = readline.questionInt('Digite: 1 - Cadastrar e 2 - Sair >>');
@@ -57,8 +57,47 @@ const readline = require('readline-sync')
 
 
 
-// i = 0 
+// i =1 ;
+
+// while(i < 5) {
+//     console.log("O valor de i é : " , i)
+//     i++
+// }
+
+// console.log('-------- Fim do programa ---------')
+
+
+
+// i = 1;
 
 // do {
-//     console.log('Bem vindo ao Fap')
-// }while(i <= 0)
+//     console.log("O valor de i é : " , i)
+//     i+=1
+// }while(i < 5)
+
+// console.log('-------- Fim do programa ---------');
+
+
+
+console.log('-------- Inicio ---------');
+
+for (i=1; i < 5 ; i++) {
+    console.log("O valor de i é : " , i)
+}
+
+console.log('-------- Fim do programa ---------');
+
+// let nome = 'Javascript'
+
+
+// for (i=0; i < nome.length; i++){
+//     console.log(nome[i])
+// }
+
+
+
+function meuNome() {
+    console.log('sorria');
+}
+
+
