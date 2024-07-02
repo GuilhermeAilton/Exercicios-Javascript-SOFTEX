@@ -23,6 +23,7 @@ while (entrada != 5) {
 
   if (opcao == 1) {
     let adicionarTarefa = readline.question( " Insira uma tarefa  :  "  );
+    //Verficando se dado invalido
     while (adicionarTarefa.trim() === '') {
       console.log('')
       console.log('')
@@ -32,6 +33,7 @@ while (entrada != 5) {
       console.log('')
       adicionarTarefa = readline.question("Insira uma tarefa :  ");
     }
+    //adicionado a tarefa na lista com metodo PUSH
     listaDeTarefas.push(adicionarTarefa)
     console.log('')
     console.log('')
@@ -39,6 +41,40 @@ while (entrada != 5) {
     console.log(chalk.green('Tarefa cadastrada com sucesso'));
     console.log(chalk.green('==================='));
     console.log('')
+
+    let novaTarefa= true
+
+    while(novaTarefa == true) {
+      console.log("");
+      console.log("1 - Cadastrar outra Tarefa");
+      console.log("2 - Voltar para o menu");
+      console.log('')
+      novaTarefa = readline.questionInt("Escolha uma das opcao : ")
+      if(novaTarefa==1) {
+        let adicionarTarefa = readline.question( " Insira uma tarefa  :  "  );
+        //Verficando se dado invalido
+        while (adicionarTarefa.trim() === '') {
+          console.log('')
+          console.log('')
+          console.log('******************');
+          console.info(chalk.yellow('Tarefa inválida'));
+          console.log('******************');
+          console.log('')
+          adicionarTarefa = readline.question("Insira uma tarefa :  ");
+        }
+        //adicionado a tarefa na lista com metodo PUSH
+        listaDeTarefas.push(adicionarTarefa)
+        console.log('')
+        console.log('')
+        console.log(chalk.green('==============================='));
+        console.log(chalk.green('Tarefa cadastrada com sucesso'));
+        console.log(chalk.green('=============================='));
+        console.log('')
+
+      }else{
+        novaTarefa = false
+      }
+    }
 
   } 
   else if (opcao == 2) {
@@ -70,7 +106,7 @@ while (entrada != 5) {
                 listaDeTarefas[index] = readline.question('Descreva a nova tarefa : ')
                 console.log('')
                 console.log(chalk.greenBright('********* Tarefa Alterada com sucesso *********** '))
-    1
+    
               }
               
         }
@@ -97,7 +133,7 @@ while (entrada != 5) {
       listaDeTarefas.splice(index,1)
       console.log('')
       console.log(chalk.bgRed('********* Tarefa exluida com sucesso *********** '))
-1
+
     }
     
   }
@@ -125,5 +161,4 @@ while (entrada != 5) {
 
   }
 }
-console.log("--------- FIM DO PROGRAMA ----------------");
-c
+console.log("--------- VOCÊ SAIU DO SISTEMA ----------------");
