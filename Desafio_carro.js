@@ -29,5 +29,6 @@ console.log("")
 for (let i = 0; i < carros.length; i++) {
   console.log(
     `Nome: ${carros[i].nome}, Marca: ${carros[i].marca}, Ano: ${carros[i].ano}`
+    console.log("")
   );
 }
