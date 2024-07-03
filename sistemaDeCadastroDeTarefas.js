@@ -1,6 +1,8 @@
 const readline = require('readline-sync')
+
 //pacote para adionar cores ao terminal
 const chalk = require('chalk')
+
 let listaDeTarefas = [];
 
 let entrada = 1;
@@ -37,9 +39,9 @@ while (entrada != 5) {
     listaDeTarefas.push(adicionarTarefa)
     console.log('')
     console.log('')
-    console.log(chalk.green('==================='));
+    console.log(chalk.green('==============================='));
     console.log(chalk.green('Tarefa cadastrada com sucesso'));
-    console.log(chalk.green('==================='));
+    console.log(chalk.green('==============================='));
     console.log('')
 
     let novaTarefa= true
@@ -78,38 +80,27 @@ while (entrada != 5) {
 
   } 
   else if (opcao == 2) {
-        // Verifica se a lista de tarefas está vazia
-        if (listaDeTarefas.length == 0){
-          console.log(chalk.bgYellowBright('A lista de Tarefas está vazia '))
-          console.log('')
-          console.log(chalk.bgYellowBright('Cadastre uma nova tarefa '))
-          console.log("")
+          // Verifica se a lista de tarefas está vazia
+           let cont = 1;
+          console.log('=========== Lista de Tarefas ===========');
+          for (let i = 0; i < listaDeTarefas.length; i++) {
+            console.log('');
+            console.log(chalk.green(`${cont} - ${listaDeTarefas[i]}`));
+            cont += 1;
+            console.log("----------------------------------------");
+          }
+          console.log('');
+          // REQUER A ENTRADA DO DADO DO USUÁRIO PARA ESCOLHER A TAREFA DE ACORDO COM NÚMERO
+          let alterarTarefa = readline.questionInt("Digite o numero da tarefa que deseja alterá-la: ");
+          let index = alterarTarefa - 1; // Ajuste para corresponder ao índice correto da array
+          if (index >= 0 && index < listaDeTarefas.length) {
+            listaDeTarefas[index] = readline.question('Descreva a nova tarefa: ');
+            console.log('');
+            console.log(chalk.greenBright('********* Tarefa Alterada com sucesso ***********'));
+          } else {
+            console.log(chalk.red('Número da tarefa inválido!'));
+          }
 
-        }else{
-              // EXIBE A LISTA DE TAREFAS 
-              cont = 1
-              console.log('=========== Lista de Tarefas =========== ')
-              for(i=0; i < listaDeTarefas.length; i++) {
-              
-                console.log('')
-                console.log(chalk.green(`${cont} - ${listaDeTarefas[i]}`))
-                cont +=1
-                console.log("----------------------------------------");
-               
-              }
-              console.log('')
-              // REQUER A ENTRADA DO DADO DO USUÁRIO PARA ESCOLHER A TAREFA DE ACORDO COM NÚMERO
-              let alterarTarefa = readline.question( "Digite o numero da tarefa que deseja alterá-la :  "  );
-              var index = listaDeTarefas.indexOf(alterarTarefa);
-              index+=1
-              if (index > -1) {
-                listaDeTarefas[index] = readline.question('Descreva a nova tarefa : ')
-                console.log('')
-                console.log(chalk.greenBright('********* Tarefa Alterada com sucesso *********** '))
-    
-              }
-              
-        }
  
   } 
   
@@ -126,7 +117,7 @@ while (entrada != 5) {
     }
     console.log('')
     // REQUER A ENTRADA DO DADO DO USUÁRIO PARA ESCOLHER A TAREFA DE ACORDO COM NÚMERO
-    let alterarTarefa = readline.question( "Digite o numero da tarefa que deseja apagar :  "  );
+    let alterarTarefa = readline.questionInt( "Digite o numero da tarefa que deseja apagar :  "  );
     var index = listaDeTarefas.indexOf(alterarTarefa);
     index+=1
     if (index > -1) {
