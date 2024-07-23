@@ -22,10 +22,7 @@ while (opcao !== 0) {
   let cadastro = {
     nome: '',
     atividades: [],
-    escolas: [{
-      nome: '',
-      cidade: ''
-    }]
+    escolas: []
   };
 
   if(opcao == 1){
@@ -52,15 +49,23 @@ while (opcao !== 0) {
             cadastroAtividades = readline.questionInt('Escolha uma opção: ');
           }
 
-          let cadastroEscolas = 1;
-          while (cadastroEscolas !== 0) {
+          let cadastroEscolasorg = 1;
+          while (cadastroEscolasorg !== 0) {
             console.log("")
             console.log("--- CADASTRE AS ESCOLAS VINCULADA A ORGANIZACAO :  ");
             console.log('');
 
-            // Solicitar e armazenar cada atividade da organização
-            let escola = readline.question("Cadastrar as escolas da organizacao: ");
-            cadastro.escolas
+            const cadastroEscolas = {
+              nome : '',
+              cidade: ''
+            }
+
+            // Solicitar e armazenar cada o nome e cidade  da escola
+            cadastroEscolas.nome = readline.question("Nome da escola: ");
+            cadastroEscolas.cidade = readline.question("Cidade: ");
+            cadastro.escolas.push(cadastroEscolas)
+            
+           
 
             console.log('');
             console.log("Para cadastrar mais escolas, digite: 1");
@@ -68,7 +73,7 @@ while (opcao !== 0) {
             console.log('');
 
             // Solicitar ao usuário se deseja continuar cadastrando atividades ou sair
-            cadastroEscolas = readline.questionInt('Escolha uma opção: ');
+            cadastroEscolasorg = readline.questionInt('Escolha uma opção: ');
           }
 
 
