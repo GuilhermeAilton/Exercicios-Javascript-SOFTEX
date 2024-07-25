@@ -1,9 +1,8 @@
 
-
-;
-
 const readline = require('readline-sync');
-let organizacaoAmbieltal = []
+//pacote para adionar cores ao terminal
+const chalk = require('chalk')
+let organizacaoAmbiental = []
 
 let opcao = 1;
 while (opcao !== 0) {
@@ -77,43 +76,72 @@ while (opcao !== 0) {
           }
 
 
-          organizacaoAmbieltal.push(cadastro)
+          organizacaoAmbiental.push(cadastro)
+
+        console.log('')
+        console.log(chalk.green('==============================='));
+        console.log(chalk.green('Organização cadastrada com sucesso'));
+        console.log(chalk.green('=============================='));
+        console.log('')
+
 
 }
 
+else if (opcao ==  2){
+      let cont = 1 
+        console.log('============================ ');
+        console.log('Lista das Organizções ');
+        console.log('============================ '); 
+        console.log("")
+    function listarOrg(organizacaoAmbiental){
+
+        organizacaoAmbiental.forEach(org => {
+          console.log(`${cont} - Nome da Organização : ${org.nome}`)
+          console.log(`Atividades : ${org.atividades}`)
+            org.escolas.forEach(escolas => {
+              console.log(`Escola : ${escolas.nome} Cidade: ${escolas.cidade}`)
+           
+              cont++
+            })
+            console.log("")
+        });
+      
+    }
+    listarOrg(organizacaoAmbiental)
+
+
+}
+
+else if (opcao == 3 ) {
+      if (organizacaoAmbiental.length == 0) {
+        console.log('============================ ');
+        console.log('Lista organização está vazia ');
+        console.log('============================ ');
+    } else {
+        console.log('---- SELECIONE A ORGANIZAÇÃO PARA ATUALIZAR : ----- ');
+             listarOrg(organizacaoAmbiental)
+                
+    }
+
+                   
+ }
+
+
+ else if(opcao == 4) {
 
 
 
+ }
 
-  }
+ else if (opcao == 0) {
+  opcao = 0
+
+ }
+  
+
+}
+
+console.log("---- Você Encerrou o Programa ----")
 
 
 
-  // let escolas = readline.question(" Cadastrar as escolas : ");
-
-  // let cadastro = {
-  //   nome: organizacaoAmbieltal,
-  //   atividades: [],
-  //   // escolas: [],
-  // };
-
-//   i = readline.questionInt(" Digite 1 - para continuar cadastrando: ");
-// }
-
-// // Adiciona o carro ao array
-
-// // Exibe os carros cadastrados
-
-// console.log("Carros cadastrados:");
-// console.log("")
-// console.log("")
-// // for (let i = 0; i < organizacaoAmbieltal.length; i++) {
-// //   console.log(
-// //     `Nome: ${organizacaoAmbieltal[i].nome}, Marca: ${organizacaoAmbieltal[i].atividades}, Ano: ${organizacaoAmbieltal[i].escolas}`
-
-// //   );
-
-// //   console.log("")
-// }
-
-console.log(organizacaoAmbieltal)
