@@ -24,6 +24,21 @@ while (opcao !== 0) {
     escolas: []
   };
 
+  
+function listarOrg(organizacaoAmbiental) {
+  let cont = 1;
+    organizacaoAmbiental.forEach(org => {
+        console.log(`${cont} - Nome da Organização : ${org.nome}`);
+        console.log(`Atividades : ${org.atividades}`);
+        org.escolas.forEach(escola => {
+            cont++;
+            console.log(`Escola : ${escola.nome}\n Cidade: ${escola.cidade}`);
+            console.log("----------------------------------------");
+        });
+        console.log("");
+    });
+}
+
   if(opcao == 1){
       // Solicitar e armazenar o nome da organização ambiental
           cadastro.nome = readline.question("Digite o nome da organizacao ambiental: ");
@@ -79,59 +94,75 @@ while (opcao !== 0) {
           organizacaoAmbiental.push(cadastro)
 
         console.log('')
-        console.log(chalk.green('==============================='));
+        console.log(chalk.green('=================================='));
         console.log(chalk.green('Organização cadastrada com sucesso'));
-        console.log(chalk.green('=============================='));
+        console.log(chalk.green('=================================='));
         console.log('')
 
 
 }
 
-else if (opcao ==  2){
-      let cont = 1 
-        console.log('============================ ');
-        console.log('Lista das Organizções ');
-        console.log('============================ '); 
-        console.log("")
-    function listarOrg(organizacaoAmbiental){
+else if (opcao == 2) {
 
-        organizacaoAmbiental.forEach(org => {
-          console.log(`${cont} - Nome da Organização : ${org.nome}`)
-          console.log(`Atividades : ${org.atividades}`)
-            org.escolas.forEach(escolas => {
-              console.log(`Escola : ${escolas.nome} Cidade: ${escolas.cidade}`)
-           
-              cont++
-            })
-            console.log("")
-        });
-      
-    }
-    listarOrg(organizacaoAmbiental)
+  console.log('============================ ');
+  console.log('Lista das Organizações ');
+  console.log('============================ ');
+  console.log("");
 
 
 }
 
-else if (opcao == 3 ) {
-      if (organizacaoAmbiental.length == 0) {
-        console.log('============================ ');
-        console.log('Lista organização está vazia ');
-        console.log('============================ ');
-    } else {
-        console.log('---- SELECIONE A ORGANIZAÇÃO PARA ATUALIZAR : ----- ');
-             listarOrg(organizacaoAmbiental)
-                
-    }
 
-                   
- }
+
+else if (opcao == 3) {
+  if (organizacaoAmbiental.length == 0) {
+      console.log('============================ ');
+      console.log('Lista organização está vazia ');
+      console.log('============================ ');
+  } else {
+      console.log('---- SELECIONE A ORGANIZAÇÃO PARA ATUALIZAR : ----- ');
+      console.log()
+      listarOrg(organizacaoAmbiental);
+      console.log('')
+      let atualizar = readline.questionInt('SELECIONE A ORGANIZACAO QUE DEJESA ALTERAR : ')
+      console.log("")
+      let index = atualizar - 1
+
+      if (index >= 0 && index < organizacaoAmbiental.length) {
+        organizacaoAmbiental[index].nome = readline.question('Descreva o nome da nova organizacao: ');
+        console.log('');
+        console.log(chalk.greenBright('********* Organização Alterada com sucesso ***********'));
+      } else {
+        console.log(chalk.red('Número da tarefa inválido!'));
+      }
+
+
+  }
+}
+
 
 
  else if(opcao == 4) {
 
+    console.log('=========== Lista de Tarefas =========== ')
+    console.log("")
+    listarOrg(organizacaoAmbiental);
+    
+    
+    console.log('')
+    // REQUER A ENTRADA DO DADO DO USUÁRIO PARA ESCOLHER A TAREFA DE ACORDO COM NÚMERO
+    let apagarOrg = readline.questionInt( "Digite o numero da organizacao que deseja apagar :  "  );
+    let index= apagarOrg -1
+    if (index > -1) {
+      organizacaoAmbiental.splice(index,1)
+      console.log('')
+      console.log(chalk.bgRed('********* Tarefa exluida com sucesso *********** '))
+
+  }
+}
 
 
- }
+ 
 
  else if (opcao == 0) {
   opcao = 0
@@ -142,6 +173,5 @@ else if (opcao == 3 ) {
 }
 
 console.log("---- Você Encerrou o Programa ----")
-
 
 
